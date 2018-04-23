@@ -25,7 +25,7 @@ app.post("/mail", (req, res) => {
       });
       
       let HelperOptions = {
-        from: `${con_name} <john@gmail.com>`,
+        from: `${con_name} <${con_email}>`,
         to: 'hqdang97@gmail.com',
         subject: 'Message From Portfolio',
         text: `${con_message} - from ${con_name} <${con_email}>`
@@ -35,10 +35,9 @@ app.post("/mail", (req, res) => {
       
         transporter.sendMail(HelperOptions, (error, info) => {
           if (error) {
-            return console.log(error);
+            return res.status(500).send("Oops! Something went wrong and we couldn't send your message.");
           }
-          console.log("The message was sent!");
-          console.log(info);
+          res.status(200).send("Thank You! Your message has been sent.")
         });
 })
 app.use(express.static('build/'))
