@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const app = express();
 const port = 8080;
@@ -16,10 +17,10 @@ app.post("/mail", (req, res) => {
         auth: {
           type: 'OAuth2',
           user: "hqdang97@gmail.com",
-          clientId: "570244468695-caqa90t5hh3i62elngu7d3ob4p20lsfk.apps.googleusercontent.com",
-          clientSecret: "Itqi7B4yRT4yFgmlhcbMmv1O",
-          refreshToken: "1/L5zc1SD-VWSX8w_UWo-n6XvBTCEs6wG3xEU130LhMr9IC8n7wWgIRqMVeBRoMvxM",
-          accessToken: "ya29.GlulBTROs8IA8CvSeY6FOOLBrJ-0cckjTAdytDt7Vd-4sjrFcY9Me_xuS5fWl3ikc-RAXqAXo16QayJ7jTl4nY7XVqn7qKcEcB6pjcxPm7uMPz6E0vtW25SPeTZs",
+          clientId: process.env.CLIENT_ID,
+          clientSecret: process.env.CLIENT_SECRET,
+          refreshToken: process.env.REFRESH_TOKEN,
+          accessToken: process.env.ACCESS_TOKEN
         },
       });
       
